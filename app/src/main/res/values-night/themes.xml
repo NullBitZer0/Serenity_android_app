@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Serenity_mad_le3" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- 60-30-10 Color Theme Implementation for Dark Mode -->
+        <item name="colorPrimary">@color/primary_60</item>
+        <item name="colorPrimaryVariant">@color/primary_variant_60</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/secondary_30</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant_30</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="colorError">@color/accent_10_danger</item>
+        <item name="colorOnError">@color/white</item>
+        
+        <item name="android:colorBackground">#121212</item>
+        <item name="colorOnBackground">@color/white</item>
+        
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnSurface">@color/white</item>
+        
+        <!-- Typography and shape -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Serenity.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Serenity.Headline2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Serenity.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Serenity.Body2</item>
+        
+        <!-- Shape appearance -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Serenity.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Serenity.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Serenity.LargeComponent</item>
+    </style>
+</resources>

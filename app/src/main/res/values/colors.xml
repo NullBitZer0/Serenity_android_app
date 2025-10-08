@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Base Colors -->
+  <color name="black">#FF000000</color>
+  <color name="white">#FFFFFFFF</color>
+  
+  <!-- 60-30-10 Color Scheme -->
+  <!-- 60% Dominant Color (Primary) -->
+  <color name="primary_60">#283593</color> <!-- Deep Indigo -->
+  <color name="primary_variant_60">#1A237E</color> <!-- Darker shade for depth -->
+  
+  <!-- 30% Supporting Color (Secondary) -->
+  <color name="secondary_30">#6EC6FF</color> <!-- Soft Blue -->
+  <color name="secondary_variant_30">#42A5F5</color> <!-- Slightly darker blue -->
+  
+  <!-- 10% Accent Color -->
+  <color name="accent_10">#FFB74D</color> <!-- Warm Orange -->
+  <color name="accent_10_danger">#FF6B6B</color> <!-- Danger Red -->
+  
+  <!-- Neutral Colors for backgrounds and text -->
+  <color name="surface_light">#FFFFFF</color>
+  <color name="surface_dim">#F5F7FA</color>
+  <color name="surface_stroke">#E3E6ED</color>
+  
+  <color name="text_primary">#212121</color>
+  <color name="text_secondary">#5F6A7A</color>
+  <color name="text_disabled">#9E9E9E</color>
+  
+  <!-- Legacy Colors (will be deprecated) -->
+  <color name="soft_blue">#6EC6FF</color>
+  <color name="lavender">#B39DDB</color>
+  <color name="growth_green">#81C784</color>
+  <color name="teal_700">#018786</color>
+  <color name="brand_indigo">#283593</color>
+  <color name="splash_background">@color/brand_indigo</color>
+  <color name="habit_screen_background">#FFFFFF</color>
+  <color name="habit_card_background">#FFFFFF</color>
+  <color name="habit_card_stroke">#E3E6ED</color>
+  <color name="habit_text_primary">#212121</color>
+  <color name="habit_text_secondary">#5F6A7A</color>
+  <color name="habit_progress">#6EC6FF</color>
+  <color name="habit_progress_track">#E3F3FF</color>
+  <color name="habit_action_tint">#283593</color>
+  <color name="habit_delete_tint">#FF6B6B</color>
+</resources>

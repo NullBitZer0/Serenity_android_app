@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/habitsFragment"
+        android:title="Habits" />
+    <item
+        android:id="@+id/moodFragment"
+        android:title="Mood" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="Settings" />
+</menu>

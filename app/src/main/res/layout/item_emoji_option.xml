@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:minHeight="56dp"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1"
+    android:textSize="24sp"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:textAlignment="center"
+    android:padding="4dp" />

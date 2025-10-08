@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/habitsFragment">
+
+    <fragment
+        android:id="@+id/habitsFragment"
+        android:name="com.example.serenity_mad_le3.ui.habits.HabitsFragment"
+        android:label="Habits">
+        <action
+            android:id="@+id/action_habits_to_calendar"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/moodFragment"
+        android:name="com.example.serenity_mad_le3.ui.mood.MoodFragment"
+        android:label="Mood">
+        <action
+            android:id="@+id/action_mood_to_chart"
+            app:destination="@id/moodChartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/moodChartFragment"
+        android:name="com.example.serenity_mad_le3.ui.mood.MoodChartFragment"
+        android:label="Mood Chart" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.serenity_mad_le3.ui.settings.SettingsFragment"
+        android:label="Settings" />
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.serenity_mad_le3.ui.habits.CalendarFragment"
+        android:label="Habit Calendar">
+        <argument
+            android:name="habitId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/inputHabitTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/habit_hint"
+            android:inputType="textCapSentences"
+            android:textColor="@color/habit_text_primary"
+            android:textColorHint="@color/habit_text_secondary" />
+
+        <EditText
+            android:id="@+id/inputHabitDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/habit_description_placeholder"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minLines="2"
+            android:textColor="@color/habit_text_primary"
+            android:textColorHint="@color/habit_text_secondary" />
+
+        <EditText
+            android:id="@+id/inputHabitTarget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/habit_target_hint"
+            android:inputType="number"
+            android:textColor="@color/habit_text_primary"
+            android:textColorHint="@color/habit_text_secondary" />
+
+        <EditText
+            android:id="@+id/inputHabitCurrent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/habit_current_hint"
+            android:inputType="number"
+            android:textColor="@color/habit_text_primary"
+            android:textColorHint="@color/habit_text_secondary" />
+
+        <EditText
+            android:id="@+id/inputHabitEmoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/habit_emoji_hint"
+            android:inputType="text"
+            android:maxLength="2"
+            android:textColor="@color/habit_text_primary"
+            android:textColorHint="@color/habit_text_secondary" />
+    </LinearLayout>
+</ScrollView>

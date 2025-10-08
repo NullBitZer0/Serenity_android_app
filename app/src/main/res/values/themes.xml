@@ -1,0 +1,75 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Serenity_mad_le3" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- 60-30-10 Color Theme Implementation -->
+        <item name="colorPrimary">@color/primary_60</item>
+        <item name="colorPrimaryVariant">@color/primary_variant_60</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/secondary_30</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant_30</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <item name="colorError">@color/accent_10_danger</item>
+        <item name="colorOnError">@color/white</item>
+        
+        <item name="android:colorBackground">@color/surface_light</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        
+        <!-- Typography and shape -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Serenity.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Serenity.Headline2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Serenity.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Serenity.Body2</item>
+        
+        <!-- Shape appearance -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Serenity.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Serenity.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Serenity.LargeComponent</item>
+    </style>
+
+    <style name="Theme.Serenity_mad_le3" parent="Base.Theme.Serenity_mad_le3" />
+
+    <!-- Splash theme for pre-Android 12 (API <31) -->
+    <style name="Theme.Serenity.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    
+    <!-- Typography Styles -->
+    <style name="TextAppearance.Serenity.Headline1" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="TextAppearance.Serenity.Headline2" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="TextAppearance.Serenity.Body1" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="TextAppearance.Serenity.Body2" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    
+    <!-- Shape Styles -->
+    <style name="ShapeAppearance.Serenity.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    
+    <style name="ShapeAppearance.Serenity.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    
+    <style name="ShapeAppearance.Serenity.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>
