@@ -1,11 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Button xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Serenity.Button.Outlined"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:minHeight="56dp"
     android:layout_columnWeight="1"
     android:layout_rowWeight="1"
-    android:textSize="24sp"
-    android:background="?attr/selectableItemBackgroundBorderless"
+    android:insetTop="0dp"
+    android:insetBottom="0dp"
+    android:minHeight="56dp"
+    android:padding="@dimen/spacing_small"
     android:textAlignment="center"
-    android:padding="4dp" />
+    android:textColor="@color/text_primary"
+    android:textSize="24sp"
+    app:strokeColor="@color/surface_stroke"
+    app:strokeWidth="1dp" />

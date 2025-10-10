@@ -2,22 +2,26 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Serenity_mad_le3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- 60-30-10 Color Theme Implementation -->
-        <item name="colorPrimary">@color/primary_60</item>
-        <item name="colorPrimaryVariant">@color/primary_variant_60</item>
-        <item name="colorOnPrimary">@color/white</item>
-        
-        <item name="colorSecondary">@color/secondary_30</item>
-        <item name="colorSecondaryVariant">@color/secondary_variant_30</item>
-        <item name="colorOnSecondary">@color/white</item>
-        
+        <item name="colorPrimary">@color/secondary_30</item>
+        <item name="colorPrimaryVariant">@color/secondary_variant_30</item>
+        <item name="colorOnPrimary">@color/secondary_on</item>
+
+        <item name="colorSecondary">@color/accent_10</item>
+        <item name="colorSecondaryVariant">@color/accent_10_variant</item>
+        <item name="colorOnSecondary">@color/accent_on</item>
+
         <item name="colorError">@color/accent_10_danger</item>
-        <item name="colorOnError">@color/white</item>
-        
-        <item name="android:colorBackground">@color/surface_light</item>
+        <item name="colorOnError">@color/accent_on</item>
+
+        <item name="android:windowBackground">@color/primary_60</item>
+        <item name="android:colorBackground">@color/primary_60</item>
         <item name="colorOnBackground">@color/text_primary</item>
-        
+
         <item name="colorSurface">@color/surface_light</item>
         <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/surface_dim</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        <item name="colorOutline">@color/surface_stroke</item>
         
         <!-- Typography and shape -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.Serenity.Headline1</item>

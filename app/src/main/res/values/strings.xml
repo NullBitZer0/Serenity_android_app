@@ -1,4 +1,5 @@
-﻿<resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <string name="app_name">Serenity</string>
     <string name="home_title">Serenity</string>
     <string name="quote_label">Today\'s Thought</string>
@@ -7,6 +8,12 @@
     <string name="btn_settings">Settings</string>
     <string name="btn_share">Share</string>
 
+    <!-- Habits -->
+    <string name="habits_headline">Habit Rhythm</string>
+    <string name="habits_subtitle">Stack small wins to unlock momentum.</string>
+    <string name="habits_focus_title">Today\'s focus</string>
+    <string name="habits_focus_message">Choose one habit to give your full attention and tap to log each win.</string>
+    <string name="habits_focus_action">Add a Habit</string>
     <string name="add_habit">Add Habit</string>
     <string name="habit_hint">e.g., Drink water</string>
     <string name="save">Save</string>
@@ -18,31 +25,64 @@
     <string name="habit_description_placeholder">Add a short description</string>
     <string name="habit_target_hint">Daily goal (e.g., 8)</string>
     <string name="habit_current_hint">Current progress</string>
-    <string name="mood_note_hint">How is your day?</string>
     <string name="habit_emoji_hint">Emoji (optional)</string>
-    <string name="cancel">Cancel</string>
 
+    <!-- Mood -->
+    <string name="mood_headline">Mood Check-in</string>
+    <string name="mood_subtitle">Name your feeling, then give it an emoji.</string>
+    <string name="mood_card_title">Capture the moment</string>
+    <string name="mood_card_hint">Describe how you feel in a sentence or two.</string>
+    <string name="mood_history_title">Recent reflections</string>
+    <string name="mood_note_hint">How is your day?</string>
+    <string name="cancel">Cancel</string>
     <string name="mood_note_required">Please tell us about your day first</string>
     <string name="emoji_option_description">Mood emoji %1$s</string>
     <string name="choose_emoji">Pick an emoji</string>
     <string name="btn_save_mood">Save Mood</string>
     <string name="btn_view_chart">Weekly Chart</string>
 
+    <!-- Settings -->
+    <string name="settings_headline">Hydration guide</string>
+    <string name="settings_subtitle">Stay on pace by tuning reminders.</string>
     <string name="settings_title">Settings</string>
     <string name="notifications">Hydration notifications</string>
     <string name="interval_label">Reminder Interval</string>
     <string name="interval_minutes">%1$d minutes</string>
     <string name="save_settings">Apply</string>
+    <string name="dark_mode">Dark mode</string>
 
+    <!-- Calendar -->
+    <string name="calendar_view">View calendar</string>
+    <string name="calendar_title_placeholder">Habit progress</string>
+    <string name="calendar_month_placeholder">Month Year</string>
+    <string name="calendar_prev_content_desc">Previous month</string>
+    <string name="calendar_next_content_desc">Next month</string>
+    <string name="calendar_day_sun">S</string>
+    <string name="calendar_day_mon">M</string>
+    <string name="calendar_day_tue">T</string>
+    <string name="calendar_day_wed">W</string>
+    <string name="calendar_day_thu">T</string>
+    <string name="calendar_day_fri">F</string>
+    <string name="calendar_day_sat">S</string>
+    <string name="calendar_legend_complete">Logged</string>
+    <string name="calendar_legend_incomplete">Missed</string>
+
+    <!-- Share -->
     <string name="chart_label">Weekly Mood</string>
     <string name="share_title">Share mood</string>
     <string name="share_prefix">This week</string>
     <string name="share_empty">No moods yet</string>
 
-    <string name="calendar_view">View calendar</string>
-
+    <!-- Notifications -->
     <string name="hydration_title">Time to hydrate</string>
-    <string name="hydration_text">Drink a glass of water 💧</string>
+    <string name="hydration_text">Drink a glass of water.</string>
+    <string name="hydration_reminder_set">Reminder set for %1$d min</string>
+    <string name="hydration_reminder_permission_denied">Allow notifications to receive hydration reminders.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Build rituals that energise your day</string>
+    <string name="onboarding_subtitle">Serenity helps you balance habits, hydration, and headspace in one calm place.</string>
+    <string name="onboarding_cta">Start tracking</string>
 
     <string-array name="quotes">
         <item>Believe you can and you\'re halfway there.</item>
@@ -52,3 +92,5 @@
         <item>Take a deep breath and smile.</item>
     </string-array>
 </resources>
+
+

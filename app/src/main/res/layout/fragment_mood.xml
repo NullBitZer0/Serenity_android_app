@@ -4,48 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_60"
     tools:context=".ui.mood.MoodFragment">
 
-    <EditText
-        android:id="@+id/editNote"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/moodToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium"
-        android:hint="@string/mood_note_hint"
-        android:minLines="2"
-        android:gravity="top"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnSaveMood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_medium"
-        android:text="@string/btn_save_mood"
-        android:backgroundTint="?attr/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editNote" />
-
-    <Button
-        android:id="@+id/btnViewChart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacing_medium"
-        android:text="@string/btn_view_chart"
-        android:backgroundTint="?attr/colorSecondary"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editNote" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/mood_headline"
+        app:subtitle="@string/mood_subtitle"
+        app:titleCentered="false"
+        app:titleTextColor="@color/text_primary"
+        app:subtitleTextColor="@color/text_secondary" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMoodComposer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        app:cardBackgroundColor="@color/surface_light"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/moodToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <TextView
+                android:id="@+id/textComposerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mood_card_title"
+                android:textAppearance="@style/TextAppearance.Serenity.Headline2"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/textComposerHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/mood_card_hint"
+                android:textAppearance="@style/TextAppearance.Serenity.Body2"
+                android:textColor="@color/text_secondary" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputMoodNote"
+                style="@style/Widget.Serenity.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:hint="@string/mood_note_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:minLines="3"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewChart"
+                    style="@style/Widget.Serenity.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_view_chart"
+                    android:textColor="@color/accent_10"
+                    app:icon="@drawable/ic_arrow_forward_24"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="@dimen/spacing_small"
+                    app:iconTint="@color/accent_10"
+                    app:strokeColor="@color/accent_10"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSaveMood"
+                    style="@style/Widget.Serenity.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:backgroundTint="@color/accent_10"
+                    android:text="@string/btn_save_mood"
+                    android:textColor="@color/accent_on"
+                    app:icon="@drawable/ic_check_circle_filled"
+                    app:iconGravity="textStart"
+                    app:iconPadding="@dimen/spacing_small"
+                    app:iconTint="@color/accent_on" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textHistoryLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:text="@string/mood_history_title"
+        android:textAppearance="@style/TextAppearance.Serenity.Headline2"
+        android:textColor="@color/text_primary"
+        app:layout_constraintBottom_toTopOf="@id/recyclerMoods"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardMoodComposer" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMoods"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/spacing_small"
-        app:layout_constraintTop_toBottomOf="@id/btnViewChart"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:paddingBottom="@dimen/fab_margin"
+        android:scrollbarStyle="outsideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textHistoryLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

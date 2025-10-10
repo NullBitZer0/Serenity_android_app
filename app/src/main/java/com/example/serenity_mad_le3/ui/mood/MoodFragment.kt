@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.GridLayout
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +15,7 @@ import com.example.serenity_mad_le3.R
 import com.example.serenity_mad_le3.data.Prefs
 import com.example.serenity_mad_le3.model.Mood
 import com.example.serenity_mad_le3.util.EmojiMapper
+import com.google.android.material.button.MaterialButton
 
 class MoodFragment : Fragment() {
     private lateinit var prefs: Prefs
@@ -31,6 +31,7 @@ class MoodFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         prefs = Prefs(requireContext())
 
+        // Keep the history list reverse-chronological so the latest mood is easy to find.
         val list = prefs.getMoods().apply { sortByDescending { it.timestamp } }
         adapter = MoodHistoryAdapter(list)
         val rv = view.findViewById<RecyclerView>(R.id.recyclerMoods)
@@ -39,9 +40,10 @@ class MoodFragment : Fragment() {
 
         val note = view.findViewById<EditText>(R.id.editNote)
 
-        view.findViewById<Button>(R.id.btnSaveMood).setOnClickListener {
+        view.findViewById<MaterialButton>(R.id.btnSaveMood).setOnClickListener {
             val noteText = note.text.toString().trim()
             if (noteText.isEmpty()) {
+                // Nudge the user to add context so the trend chart has richer data.
                 note.error = getString(R.string.mood_note_required)
                 note.requestFocus()
             } else {
@@ -49,7 +51,8 @@ class MoodFragment : Fragment() {
             }
         }
 
-        view.findViewById<Button>(R.id.btnViewChart).setOnClickListener {
+        view.findViewById<MaterialButton>(R.id.btnViewChart).setOnClickListener {
+            // Push the mood analytics fragment via the nav graph.
             findNavController().navigate(R.id.action_mood_to_chart)
         }
     }
@@ -60,13 +63,14 @@ class MoodFragment : Fragment() {
 
         var alert: AlertDialog? = null
         emojiChoices.forEach { emoji ->
-            val button = LayoutInflater.from(requireContext()).inflate(R.layout.item_emoji_option, grid, false) as Button
+            val button = LayoutInflater.from(requireContext()).inflate(R.layout.item_emoji_option, grid, false) as MaterialButton
             button.text = emoji
             button.contentDescription = getString(R.string.emoji_option_description, emoji)
             button.setOnClickListener {
                 saveMoodEntry(emoji, noteText)
                 noteField.text.clear()
                 noteField.error = null
+                // Close the dialog once a selection is made so the flow feels immediate.
                 alert?.dismiss()
             }
             grid.addView(button)
@@ -91,6 +95,7 @@ class MoodFragment : Fragment() {
         val moods = prefs.getMoods()
         moods.add(item)
         prefs.saveMoods(moods)
+        // Refresh with a sorted copy so the latest entry surfaces at the top.
         adapter.update(moods.sortedByDescending { it.timestamp }.toMutableList())
     }
 }

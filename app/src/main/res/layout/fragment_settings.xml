@@ -4,64 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingsFragment"
-    android:padding="16dp">
+    android:background="@color/primary_60"
+    tools:context=".ui.settings.SettingsFragment">
 
-    <TextView
-        android:id="@+id/labelNotif"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/settingsToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/notifications"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/switchNotifications"
-        android:layout_marginEnd="8dp" />
-
-    <Switch
-        android:id="@+id/switchNotifications"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:title="@string/settings_headline"
+        app:subtitle="@string/settings_subtitle"
+        app:titleCentered="false"
+        app:titleTextColor="@color/text_primary"
+        app:subtitleTextColor="@color/text_secondary" />
 
-    <TextView
-        android:id="@+id/labelInterval"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/interval_label"
-        app:layout_constraintTop_toBottomOf="@id/labelNotif"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="24dp" />
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderInterval"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHydrationSettings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/labelInterval"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_large"
+        app:cardBackgroundColor="@color/surface_light"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:valueFrom="15"
-        android:valueTo="240"
-        android:stepSize="15"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/textInterval"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/sliderInterval"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:text="@string/interval_minutes" />
+        app:layout_constraintTop_toBottomOf="@id/settingsToolbar">
 
-    <Button
-        android:id="@+id/btnSaveSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save_settings"
-        app:layout_constraintTop_toBottomOf="@id/textInterval"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <LinearLayout
+                android:id="@+id/rowDarkMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iconDarkMode"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/dark_mode" />
+
+                <TextView
+                    android:id="@+id/labelDarkMode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:text="@string/dark_mode"
+                    android:textAppearance="@style/TextAppearance.Serenity.Body1"
+                    android:textColor="@color/text_primary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchDarkMode"
+                    style="@style/Widget.Material3.CompoundButton.Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:thumbTint="@color/secondary_30"
+                    app:trackTint="@color/habit_progress_track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/labelNotif"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/notifications"
+                    android:textAppearance="@style/TextAppearance.Serenity.Body1"
+                    android:textColor="@color/text_primary" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchNotifications"
+                    style="@style/Widget.Material3.CompoundButton.Switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:thumbTint="@color/accent_10"
+                    app:trackTint="@color/habit_progress_track" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:background="@color/surface_stroke" />
+
+            <TextView
+                android:id="@+id/labelInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:text="@string/interval_label"
+                android:textAppearance="@style/TextAppearance.Serenity.Body1"
+                android:textColor="@color/text_primary" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:stepSize="15"
+                android:valueFrom="15"
+                android:valueTo="240"
+                app:haloRadius="12dp"
+                app:thumbColor="@color/accent_10"
+                app:tickColor="@color/habit_progress_track"
+                app:trackColorActive="@color/secondary_30"
+                app:trackColorInactive="@color/habit_progress_track" />
+
+            <TextView
+                android:id="@+id/textInterval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@string/interval_minutes"
+                android:textAppearance="@style/TextAppearance.Serenity.Body2"
+                android:textColor="@color/text_secondary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveSettings"
+                style="@style/Widget.Serenity.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:backgroundTint="@color/secondary_30"
+                android:text="@string/save_settings"
+                android:textColor="@color/secondary_on" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

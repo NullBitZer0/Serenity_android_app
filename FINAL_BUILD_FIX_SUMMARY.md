@@ -15,10 +15,7 @@ Multiple files in the project contained BOM characters at the beginning, which w
 
 ### 2. XML Namespace Declaration Issues
 The merged values.xml file had broken XML namespace declarations with attributes split across multiple lines:
-```xml
-<resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:
-:names:tc:xliff:document:1.2">
-```
+
 
 **Solution**: Fixed encoding issues in source files to ensure proper XML generation.
 

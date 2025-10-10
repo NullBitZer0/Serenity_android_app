@@ -35,6 +35,7 @@ class HabitAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+        // Each card is inflated on demand; RecyclerView handles pooling for us.
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_habit, parent, false)
         return VH(v)
     }
@@ -65,8 +66,10 @@ class HabitAdapter(
 
         holder.check.setOnCheckedChangeListener(null)
         holder.check.isChecked = item.completedToday
+        // Delegate changes back to the fragment so it can persist and update history.
         holder.check.setOnCheckedChangeListener { _, isChecked -> onToggle(item, isChecked) }
 
+        // Tap targets address the most common actions without opening overflow menus.
         holder.itemView.setOnClickListener { onIncrement(item) }
         holder.edit.setOnClickListener { onEdit(item) }
         holder.delete.setOnClickListener { onDelete(item) }

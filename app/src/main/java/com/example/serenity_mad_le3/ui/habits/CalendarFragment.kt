@@ -59,6 +59,7 @@ class CalendarFragment : Fragment() {
     }
     
     private fun setupCalendar() {
+        // CalendarAdapter shades days using the stored completion history for this habit.
         calendarAdapter = CalendarAdapter(
             requireContext(),
             calendar,
@@ -99,6 +100,7 @@ class CalendarFragment : Fragment() {
     }
     
     private fun updateMonthYearDisplay() {
+        // Show the active month so users always know which segment of their streak they are viewing.
         val monthYearFormat = SimpleDateFormat("MMMM yyyy", Locale.getDefault())
         view?.findViewById<TextView>(R.id.textMonthYear)?.text = monthYearFormat.format(calendar.time)
     }

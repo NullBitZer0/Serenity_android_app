@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.serenity_mad_le3.R
 import com.example.serenity_mad_le3.data.Prefs
 import com.example.serenity_mad_le3.model.Habit
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.button.MaterialButton
 import java.util.UUID
 
 class HabitsFragment : Fragment() {
@@ -27,8 +27,11 @@ class HabitsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Preferences wrapper keeps habit list and daily reset state in sync across sessions.
         prefs = Prefs(requireContext())
         habits = prefs.getHabits() // Reset is handled in Prefs.getHabits()
+
+        // Recycler adapter exposes callbacks so the fragment can persist edits and drive navigation.
         adapter = HabitAdapter(
             habits,
             onIncrement = { habit ->
@@ -86,14 +89,17 @@ class HabitsFragment : Fragment() {
             }
         )
 
+        // Wire up the habit list for vertical scrolling.
         val rv = view.findViewById<RecyclerView>(R.id.recyclerHabits)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
 
-        view.findViewById<FloatingActionButton>(R.id.fabAddHabit).setOnClickListener { showHabitDialog() }
+        // Surface a single call-to-action that opens the create/edit dialog.
+        view.findViewById<MaterialButton>(R.id.buttonHabitFocus)?.setOnClickListener { showHabitDialog() }
     }
 
     private fun showHabitDialog(habit: Habit? = null) {
+        // Reuse a single layout for create and edit flows; pre-fill data when editing.
         val dialogView = layoutInflater.inflate(R.layout.dialog_habit, null)
         val titleInput = dialogView.findViewById<EditText>(R.id.inputHabitTitle)
         val descriptionInput = dialogView.findViewById<EditText>(R.id.inputHabitDescription)
@@ -163,6 +169,7 @@ class HabitsFragment : Fragment() {
     private fun notifyChangeFor(habit: Habit) {
         val index = habits.indexOf(habit)
         if (index != -1) {
+            // Notify one row when possible so RecyclerView animations stay smooth.
             adapter.notifyItemChanged(index)
         } else {
             adapter.notifyDataSetChanged()

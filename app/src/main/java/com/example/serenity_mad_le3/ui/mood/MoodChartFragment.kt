@@ -45,6 +45,7 @@ class MoodChartFragment : Fragment() {
             val end = start + dayMillis
             val dayMoods = moods.filter { it.timestamp in start until end }
             val value = if (dayMoods.isEmpty()) 0f else dayMoods.map { it.score }.average().toFloat()
+            // x-axis index runs left to right while we fill the label list.
             entries.add(Entry((6 - i).toFloat(), value))
             labels.add(fmt.format(start))
         }
@@ -58,8 +59,13 @@ class MoodChartFragment : Fragment() {
             valueTextSize = 10f
         }
         chart.data = LineData(dataSet)
-        chart.axisLeft.axisMinimum = 1f
-        chart.axisLeft.axisMaximum = 9f
+        // Clamp the y-axis around the scoring range (-10..+10) so neutral sits on the centerline.
+        chart.axisLeft.axisMinimum = -10f
+        chart.axisLeft.axisMaximum = 10f
+        chart.axisLeft.granularity = 2f
+        chart.axisLeft.setDrawZeroLine(true)
+        chart.axisLeft.zeroLineColor = resources.getColor(R.color.surface_stroke, null)
+        chart.axisLeft.zeroLineWidth = 1f
         chart.axisRight.isEnabled = false
         chart.description.isEnabled = false
         chart.xAxis.position = XAxis.XAxisPosition.BOTTOM

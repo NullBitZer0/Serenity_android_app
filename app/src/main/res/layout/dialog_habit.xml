@@ -7,57 +7,99 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:paddingBottom="@dimen/spacing_large">
 
-        <EditText
-            android:id="@+id/inputHabitTitle"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Serenity.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/habit_hint"
-            android:inputType="textCapSentences"
-            android:textColor="@color/habit_text_primary"
-            android:textColorHint="@color/habit_text_secondary" />
+            android:hint="@string/habit_hint">
 
-        <EditText
-            android:id="@+id/inputHabitDescription"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputHabitTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:textColor="@color/habit_text_primary"
+                android:textColorHint="@color/habit_text_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Serenity.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/habit_description_placeholder"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minLines="2"
-            android:textColor="@color/habit_text_primary"
-            android:textColorHint="@color/habit_text_secondary" />
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:hint="@string/habit_description_placeholder">
 
-        <EditText
-            android:id="@+id/inputHabitTarget"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputHabitDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minLines="3"
+                android:textColor="@color/habit_text_primary"
+                android:textColorHint="@color/habit_text_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/habit_target_hint"
-            android:inputType="number"
-            android:textColor="@color/habit_text_primary"
-            android:textColorHint="@color/habit_text_secondary" />
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/inputHabitCurrent"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Serenity.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:hint="@string/habit_target_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputHabitTarget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/habit_text_primary"
+                    android:textColorHint="@color/habit_text_secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Serenity.TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:hint="@string/habit_current_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputHabitCurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/habit_text_primary"
+                    android:textColorHint="@color/habit_text_secondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Serenity.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/habit_current_hint"
-            android:inputType="number"
-            android:textColor="@color/habit_text_primary"
-            android:textColorHint="@color/habit_text_secondary" />
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:hint="@string/habit_emoji_hint">
 
-        <EditText
-            android:id="@+id/inputHabitEmoji"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/habit_emoji_hint"
-            android:inputType="text"
-            android:maxLength="2"
-            android:textColor="@color/habit_text_primary"
-            android:textColorHint="@color/habit_text_secondary" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputHabitEmoji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textColor="@color/habit_text_primary"
+                android:textColorHint="@color/habit_text_secondary" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 </ScrollView>

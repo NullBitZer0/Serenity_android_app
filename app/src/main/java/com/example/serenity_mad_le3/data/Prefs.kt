@@ -15,6 +15,7 @@ class Prefs(context: Context) {
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
     fun getHabits(): MutableList<Habit> {
+        // Seed starter data the first time the app launches.
         val json = prefs.getString(KEY_HABITS, null)
         if (json == null) {
             val seeded = seedHabits()
@@ -24,12 +25,14 @@ class Prefs(context: Context) {
         val type = object : TypeToken<MutableList<Habit>>() {}.type
         val habits: MutableList<Habit> = gson.fromJson(json, type)
         return habits.apply { 
+            // Ensure daily resets and legacy migrations happen transparently.
             resetIfNeeded()
             sanitizeHabits() 
         }
     }
 
     fun saveHabits(list: List<Habit>) {
+        // Gson keeps the model flexible without introducing a full database.
         prefs.edit().putString(KEY_HABITS, gson.toJson(list)).apply()
     }
 
@@ -40,6 +43,7 @@ class Prefs(context: Context) {
             return mutableListOf()
         }
 
+        // Lazy initialize mood history to avoid null checks in calling code.
         val json = prefs.getString(KEY_MOODS, null)
         if (json == null) {
             saveMoods(emptyList())
@@ -64,6 +68,7 @@ class Prefs(context: Context) {
     }
 
     fun saveSettings(settings: Settings) {
+        // Settings writes are lightweight, so commit immediately.
         prefs.edit().putString(KEY_SETTINGS, gson.toJson(settings)).apply()
     }
 
@@ -77,6 +82,7 @@ class Prefs(context: Context) {
         val habits = getHabits()
         val habit = habits.find { it.id == habitId }
         if (habit != null) {
+            // Persist a daily snapshot so the calendar view can highlight past performance.
             habit.completionHistory[getCurrentDate()] = completed
             saveHabits(habits)
         }
@@ -158,6 +164,7 @@ class Prefs(context: Context) {
     }
 
     private fun MutableList<Habit>.sanitizeHabits() {
+        // Normalize values so rendering and progress math never crash.
         forEach { habit ->
             if (habit.emoji.isNullOrBlank()) habit.emoji = Habit.DEFAULT_EMOJI
             habit.description = habit.description?.trim() ?: ""
@@ -173,6 +180,7 @@ class Prefs(context: Context) {
     }
 
     private fun MutableList<Mood>.sanitizeMoods() {
+        // Most recent mood first keeps the list intuitive for users.
         sortByDescending { it.timestamp }
     }
 

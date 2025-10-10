@@ -4,186 +4,205 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/primary_60"
+    tools:context=".ui.habits.CalendarFragment">
 
     <TextView
         android:id="@+id/textHabitTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Habit Title"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:text="@string/calendar_title_placeholder"
+        android:textAppearance="@style/TextAppearance.Serenity.Headline1"
+        android:textColor="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/monthNavigation"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardCalendar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/spacing_large"
+        app:cardBackgroundColor="@color/habit_card_background"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/habit_card_stroke"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textHabitTitle">
 
-        <ImageButton
-            android:id="@+id/btnPrevious"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_back_24"
-            android:contentDescription="Previous month" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_large">
 
-        <TextView
-            android:id="@+id/textMonthYear"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Month Year"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center" />
+            <LinearLayout
+                android:id="@+id/monthNavigation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/btnNext"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_forward_24"
-            android:contentDescription="Next month" />
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btnPrevious"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="@string/calendar_prev_content_desc"
+                    android:padding="8dp"
+                    android:tint="@color/secondary_30"
+                    app:srcCompat="@drawable/ic_arrow_back_24" />
 
-    <LinearLayout
-        android:id="@+id/weekDays"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/monthNavigation">
+                <TextView
+                    android:id="@+id/textMonthYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/calendar_month_placeholder"
+                    android:textAppearance="@style/TextAppearance.Serenity.Headline2"
+                    android:textColor="@color/text_primary" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="S"
-            android:textSize="16sp"
-            android:gravity="center" />
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:contentDescription="@string/calendar_next_content_desc"
+                    android:padding="8dp"
+                    android:tint="@color/secondary_30"
+                    app:srcCompat="@drawable/ic_arrow_forward_24" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="M"
-            android:textSize="16sp"
-            android:gravity="center" />
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:background="@color/surface_stroke"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/monthNavigation" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="T"
-            android:textSize="16sp"
-            android:gravity="center" />
+            <LinearLayout
+                android:id="@+id/weekDays"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="W"
-            android:textSize="16sp"
-            android:gravity="center" />
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_sun" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="T"
-            android:textSize="16sp"
-            android:gravity="center" />
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_mon" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="F"
-            android:textSize="16sp"
-            android:gravity="center" />
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_tue" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="S"
-            android:textSize="16sp"
-            android:gravity="center" />
-    </LinearLayout>
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_wed" />
 
-    <GridView
-        android:id="@+id/calendarGrid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:numColumns="7"
-        android:horizontalSpacing="4dp"
-        android:verticalSpacing="4dp"
-        app:layout_constraintBottom_toTopOf="@id/textLegend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weekDays" />
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_thu" />
 
-    <TextView
-        android:id="@+id/textLegend"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Legend:"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/legendItems"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_fri" />
 
-    <LinearLayout
-        android:id="@+id/legendItems"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    style="@style/Widget.Calendar.DayLabel"
+                    android:text="@string/calendar_day_sat" />
+            </LinearLayout>
 
-        <View
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_calendar_completed" />
+            <GridView
+                android:id="@+id/calendarGrid"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:horizontalSpacing="4dp"
+                android:numColumns="7"
+                android:verticalSpacing="4dp"
+                app:layout_constraintBottom_toTopOf="@id/legendDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weekDays" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Completed"
-            android:textSize="14sp" />
+            <View
+                android:id="@+id/legendDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/surface_stroke"
+                app:layout_constraintBottom_toTopOf="@id/legendItems"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calendarGrid" />
 
-        <View
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_calendar_not_completed" />
+            <LinearLayout
+                android:id="@+id/legendItems"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Not Completed"
-            android:textSize="14sp" />
-    </LinearLayout>
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:background="@drawable/bg_calendar_completed" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calendar_legend_complete"
+                    android:textAppearance="@style/TextAppearance.Serenity.Body2"
+                    android:textColor="@color/text_primary" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:background="@drawable/bg_calendar_not_completed" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calendar_legend_incomplete"
+                    android:textAppearance="@style/TextAppearance.Serenity.Body2"
+                    android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

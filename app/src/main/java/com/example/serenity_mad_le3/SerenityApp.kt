@@ -8,6 +8,7 @@ import android.os.Build
 class SerenityApp : Application() {
     override fun onCreate() {
         super.onCreate()
+        // Register the notification channel once so reminders can fire on Android O+.
         createNotificationChannel()
     }
 
@@ -21,6 +22,7 @@ class SerenityApp : Application() {
                 description = "Reminders to drink water"
             }
             val manager = getSystemService(NotificationManager::class.java)
+            // Safe to call multiple times; the system ignores duplicate definitions.
             manager.createNotificationChannel(channel)
         }
     }
@@ -29,4 +31,3 @@ class SerenityApp : Application() {
         const val NOTIFICATION_CHANNEL_ID = "hydration"
     }
 }
-

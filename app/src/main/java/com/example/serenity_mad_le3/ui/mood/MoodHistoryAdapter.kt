@@ -29,13 +29,14 @@ class MoodHistoryAdapter(private var items: MutableList<Mood>) : RecyclerView.Ad
         val item = items[position]
         holder.emoji.text = item.emoji
         holder.note.text = item.note ?: ""
+        // Friendly weekday + time keeps the note easy to place in memory.
         val sdf = SimpleDateFormat("EEE, h:mm a", Locale.getDefault())
         holder.time.text = sdf.format(Date(item.timestamp))
     }
 
     fun update(newItems: MutableList<Mood>) {
         items = newItems
+        // Simple notify-all keeps the adapter logic straightforward for this small list.
         notifyDataSetChanged()
     }
 }
-
