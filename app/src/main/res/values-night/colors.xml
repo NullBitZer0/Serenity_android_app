@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Base neutrals -->
+  <color name="black">#FF000000</color>
+  <color name="white">#FFFFFFFF</color>
+
+  <!-- 60% dominant foundation -->
+  <color name="primary_60">#101528</color>
+  <color name="primary_variant_60">#0C1121</color>
+
+  <!-- 30% supporting brand tone -->
+  <color name="secondary_30">#4E5BD5</color>
+  <color name="secondary_variant_30">#414BC0</color>
+  <color name="secondary_on">#F3F4FF</color>
+
+  <!-- 10% accent pop -->
+  <color name="accent_10">#FFA46B</color>
+  <color name="accent_10_variant">#FF8D4B</color>
+  <color name="accent_on">#1B223D</color>
+  <color name="accent_10_danger">#FF7B83</color>
+
+  <!-- Neutral surfaces -->
+  <color name="surface_light">#171E33</color>
+  <color name="surface_dim">#1F2740</color>
+  <color name="surface_stroke">#2C3456</color>
+
+  <!-- Typography palette -->
+  <color name="text_primary">#F3F4FF</color>
+  <color name="text_secondary">#B6BCE8</color>
+  <color name="text_disabled">#7A80A0</color>
+
+  <!-- Legacy mappings kept for compatibility -->
+  <color name="soft_blue">@color/secondary_30</color>
+  <color name="lavender">#3F4C89</color>
+  <color name="growth_green">#52B79A</color>
+  <color name="teal_700">#03DAC5</color>
+  <color name="brand_indigo">@color/secondary_30</color>
+  <color name="splash_background">@color/secondary_30</color>
+  <color name="habit_screen_background">@color/primary_60</color>
+  <color name="habit_card_background">@color/surface_light</color>
+  <color name="habit_card_stroke">@color/surface_stroke</color>
+  <color name="habit_text_primary">@color/text_primary</color>
+  <color name="habit_text_secondary">@color/text_secondary</color>
+  <color name="habit_progress">@color/secondary_30</color>
+  <color name="habit_progress_track">#273057</color>
+  <color name="habit_action_tint">@color/secondary_30</color>
+  <color name="habit_delete_tint">@color/accent_10_danger</color>
+</resources>
