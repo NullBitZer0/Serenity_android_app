@@ -23,4 +23,13 @@
 
     <!-- Progress bar dimensions -->
     <dimen name="progress_height">8dp</dimen>
+
+    <!-- Bottom navigation -->
+    <dimen name="bottom_nav_icon_size">24dp</dimen>
+    <dimen name="bottom_nav_vertical_padding">6dp</dimen>
+    <dimen name="bottom_nav_outline_width">2dp</dimen>
+    <dimen name="bottom_nav_horizontal_padding">6dp</dimen>
+    <dimen name="bottom_nav_indicator_height">32dp</dimen>
+    <dimen name="bottom_nav_indicator_min_width">48dp</dimen>
+    <dimen name="bottom_nav_indicator_horizontal_padding">14dp</dimen>
 </resources>

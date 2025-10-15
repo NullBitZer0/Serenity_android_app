@@ -45,4 +45,5 @@
   <color name="habit_progress_track">#DCE2FF</color>
   <color name="habit_action_tint">@color/secondary_30</color>
   <color name="habit_delete_tint">@color/accent_10_danger</color>
+  <color name="bottom_nav_indicator">#E3E7FF</color>
 </resources>

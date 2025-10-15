@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.serenity_mad_le3.R
 import com.example.serenity_mad_le3.data.Prefs
 import com.github.mikephil.charting.charts.LineChart
@@ -24,6 +25,9 @@ class MoodChartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val toolbar = view.findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.moodChartToolbar)
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
         val chart = view.findViewById<LineChart>(R.id.lineChart)
         val prefs = Prefs(requireContext())
         val moods = prefs.getMoods()

@@ -1,11 +1,14 @@
-﻿package com.example.serenity_mad_le3.ui.habits
+package com.example.serenity_mad_le3.ui.habits
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +26,10 @@ class HabitsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_habits, container, false)
+    ): View? {
+        val content = inflater.inflate(R.layout.fragment_habits, container, false)
+        return wrapIfLandscape(content)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,16 +77,24 @@ class HabitsFragment : Fragment() {
             },
             onEdit = { habit -> showHabitDialog(habit) },
             onDelete = { habit ->
-                val index = habits.indexOf(habit)
-                if (index >= 0) {
-                    habits.removeAt(index)
-                    prefs.saveHabits(habits)
-                    adapter.notifyItemRemoved(index)
-                } else {
-                    habits.remove(habit)
-                    prefs.saveHabits(habits)
-                    adapter.notifyDataSetChanged()
-                }
+                AlertDialog.Builder(requireContext())
+                    .setTitle(R.string.confirm_delete_habit_title)
+                    .setMessage(getString(R.string.confirm_delete_habit_message, habit.title))
+                    .setPositiveButton(R.string.delete_habit) { dialog, _ ->
+                        val index = habits.indexOf(habit)
+                        if (index >= 0) {
+                            habits.removeAt(index)
+                            prefs.saveHabits(habits)
+                            adapter.notifyItemRemoved(index)
+                        } else {
+                            habits.remove(habit)
+                            prefs.saveHabits(habits)
+                            adapter.notifyDataSetChanged()
+                        }
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton(R.string.cancel, null)
+                    .show()
             },
             onCalendar = { habit -> 
                 // Navigate to calendar fragment with habit ID
@@ -93,6 +107,11 @@ class HabitsFragment : Fragment() {
         val rv = view.findViewById<RecyclerView>(R.id.recyclerHabits)
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
+        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            rv.isNestedScrollingEnabled = false
+        } else {
+            rv.isNestedScrollingEnabled = true
+        }
 
         // Surface a single call-to-action that opens the create/edit dialog.
         view.findViewById<MaterialButton>(R.id.buttonHabitFocus)?.setOnClickListener { showHabitDialog() }
@@ -156,6 +175,11 @@ class HabitsFragment : Fragment() {
                         if (wasCompleted != habit.completedToday) {
                             prefs.recordHabitCompletion(habit.id, habit.completedToday)
                         }
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.habit_updated_toast, habit.title),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     prefs.saveHabits(habits)
                     adapter.update(habits)
@@ -174,6 +198,25 @@ class HabitsFragment : Fragment() {
         } else {
             adapter.notifyDataSetChanged()
         }
+    }
+
+    private fun wrapIfLandscape(content: View): View {
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            return content
+        }
+        val scroll = NestedScrollView(requireContext()).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            isFillViewport = true
+        }
+        content.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        scroll.addView(content)
+        return scroll
     }
 
     companion object {

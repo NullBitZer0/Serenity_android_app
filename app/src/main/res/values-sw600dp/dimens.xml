@@ -23,4 +23,13 @@
 
     <!-- Progress bar dimensions for tablets -->
     <dimen name="progress_height">10dp</dimen>
+
+    <!-- Bottom navigation for tablets -->
+    <dimen name="bottom_nav_icon_size">28dp</dimen>
+    <dimen name="bottom_nav_vertical_padding">10dp</dimen>
+    <dimen name="bottom_nav_outline_width">2dp</dimen>
+    <dimen name="bottom_nav_horizontal_padding">10dp</dimen>
+    <dimen name="bottom_nav_indicator_height">36dp</dimen>
+    <dimen name="bottom_nav_indicator_min_width">58dp</dimen>
+    <dimen name="bottom_nav_indicator_horizontal_padding">18dp</dimen>
 </resources>

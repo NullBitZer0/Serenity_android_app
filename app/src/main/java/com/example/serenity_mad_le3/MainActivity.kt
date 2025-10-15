@@ -1,18 +1,22 @@
 ﻿package com.example.serenity_mad_le3
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.serenity_mad_le3.data.Prefs
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.library.fontawesome.FontAwesome
+import com.mikepenz.iconics.utils.colorInt
 import com.mikepenz.iconics.utils.sizeDp
 
 
@@ -38,14 +42,39 @@ class MainActivity : AppCompatActivity() {
         navController.graph = graph
         val bottom = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_nav)
         bottom.setupWithNavController(navController)
-        val iconSize = 24
-        // Iconics keeps the bottom nav icons vector-based while matching the design spec.
+        val iconSize = (resources.getDimension(R.dimen.bottom_nav_icon_size) / resources.displayMetrics.density).toInt()
+        val contourWidth = resources.getDimensionPixelSize(R.dimen.bottom_nav_outline_width)
+        fun statefulIcon(icon: FontAwesome.Icon): StateListDrawable {
+            return StateListDrawable().apply {
+                addState(
+                    intArrayOf(android.R.attr.state_checked),
+                    IconicsDrawable(this@MainActivity, icon).apply {
+                        sizeDp = iconSize
+                        colorInt = ContextCompat.getColor(this@MainActivity, R.color.secondary_30)
+                    }
+                )
+                addState(
+                    intArrayOf(),
+                    IconicsDrawable(this@MainActivity, icon).apply {
+                        sizeDp = iconSize
+                        colorList = ColorStateList.valueOf(Color.TRANSPARENT)
+                        drawContour = true
+                        contourColorList =
+                            ColorStateList.valueOf(
+                                ContextCompat.getColor(this@MainActivity, R.color.text_secondary)
+                            )
+                        contourWidthPx = contourWidth
+                    }
+                )
+            }
+        }
+        // Outline icons keep the default state light, while solid icons emphasize the active destination.
         bottom.menu.findItem(R.id.habitsFragment).icon =
-            IconicsDrawable(this, FontAwesome.Icon.faw_tasks).apply { sizeDp = iconSize }
+            statefulIcon(FontAwesome.Icon.faw_tasks)
         bottom.menu.findItem(R.id.moodFragment).icon =
-            IconicsDrawable(this, FontAwesome.Icon.faw_smile).apply { sizeDp = iconSize }
+            statefulIcon(FontAwesome.Icon.faw_smile)
         bottom.menu.findItem(R.id.settingsFragment).icon =
-            IconicsDrawable(this, FontAwesome.Icon.faw_cog).apply { sizeDp = iconSize }
+            statefulIcon(FontAwesome.Icon.faw_cog)
         // Hide bottom bar on non-root destinations
         navController.addOnDestinationChangedListener { _, dest, _ ->
             // Secondary screens (calendar, chart) get more vertical space without the nav bar.

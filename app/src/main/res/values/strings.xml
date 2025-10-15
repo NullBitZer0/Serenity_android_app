@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Serenity</string>
     <string name="home_title">Serenity</string>
@@ -19,6 +19,9 @@
     <string name="save">Save</string>
     <string name="edit_habit">Edit habit</string>
     <string name="delete_habit">Delete habit</string>
+    <string name="confirm_delete_habit_title">Delete habit?</string>
+    <string name="confirm_delete_habit_message">Are you sure you want to delete &quot;%1$s&quot;?</string>
+    <string name="habit_updated_toast">%1$s updated.</string>
     <string name="habit_progress_format">%1$d/%2$d</string>
     <string name="habit_percent_format">%1$d%%</string>
     <string name="habit_done_icon">Habit completed</string>
@@ -40,6 +43,12 @@
     <string name="choose_emoji">Pick an emoji</string>
     <string name="btn_save_mood">Save Mood</string>
     <string name="btn_view_chart">Weekly Chart</string>
+    <string name="mood_filter_showing_all">Showing all moods</string>
+    <string name="mood_filter_showing_date">Showing moods for %1$s</string>
+    <string name="mood_filter_showing_date_empty">No moods recorded on %1$s</string>
+    <string name="mood_filter_pick_date">Select date</string>
+    <string name="mood_filter_clear">Clear</string>
+    <string name="mood_filter_picker_title">Choose a day</string>
 
     <!-- Settings -->
     <string name="settings_headline">Hydration guide</string>
@@ -72,6 +81,14 @@
     <string name="share_title">Share mood</string>
     <string name="share_prefix">This week</string>
     <string name="share_empty">No moods yet</string>
+    <string name="share_prefix_all_time">Overall</string>
+    <plurals name="share_total_logged">
+        <item quantity="one">I logged %d mood.</item>
+        <item quantity="other">I logged %d moods.</item>
+    </plurals>
+    <string name="share_average_label">Average mood score: %1$s.</string>
+    <string name="share_mood_highlight">Mood highlight: %1$s</string>
+    <string name="share_mood_highlight_with_note">Mood highlight: %1$s - &quot;%2$s&quot;</string>
 
     <!-- Notifications -->
     <string name="hydration_title">Time to hydrate</string>
@@ -92,5 +109,3 @@
         <item>Take a deep breath and smile.</item>
     </string-array>
 </resources>
-
-

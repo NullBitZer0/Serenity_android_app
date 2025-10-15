@@ -76,4 +76,35 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+
+    <style name="ShapeAppearanceOverlay.Serenity.BottomNav" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">28dp</item>
+        <item name="cornerSizeTopRight">28dp</item>
+        <item name="cornerSizeBottomLeft">36dp</item>
+        <item name="cornerSizeBottomRight">36dp</item>
+    </style>
+
+    <style name="Widget.Serenity.BottomNav.ActiveIndicator" parent="@style/Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/bottom_nav_indicator</item>
+        <item name="android:height">@dimen/bottom_nav_indicator_height</item>
+        <item name="android:minWidth">@dimen/bottom_nav_indicator_min_width</item>
+        <item name="android:paddingLeft">@dimen/bottom_nav_indicator_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/bottom_nav_indicator_horizontal_padding</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceOverlay.Serenity.BottomNavIndicator</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Serenity.BottomNavIndicator" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="TextAppearance.Serenity.BottomNav.Active" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/secondary_30</item>
+    </style>
+
+    <style name="TextAppearance.Serenity.BottomNav.Inactive" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
 </resources>

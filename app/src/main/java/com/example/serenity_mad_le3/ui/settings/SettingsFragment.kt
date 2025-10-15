@@ -3,6 +3,7 @@ package com.example.serenity_mad_le3.ui.settings
 import android.Manifest
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
@@ -68,7 +70,8 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+        val content = inflater.inflate(R.layout.fragment_settings, container, false)
+        return wrapIfLandscape(content)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -195,5 +198,24 @@ class SettingsFragment : Fragment() {
             .build()
         wm.enqueue(request)
         Log.d(TAG, "Queued debug hydration reminder with 10s delay for quick verification.")
+    }
+
+    private fun wrapIfLandscape(content: View): View {
+        if (resources.configuration.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+            return content
+        }
+        val scroll = NestedScrollView(requireContext()).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            isFillViewport = true
+        }
+        content.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        scroll.addView(content)
+        return scroll
     }
 }
